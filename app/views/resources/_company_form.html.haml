@@ -8,6 +8,7 @@
         = f.input :name, input_html: {class: "company-form-input form-input"}, placeholder: "Enter the company's name"
         = f.input :href, input_html: {class: "company-form-input form-input"}, label: "Link", placeholder: "http://www..."
         = f.input :description, input_html: {class: "company-form-input form-input"}, placeholder: "Describe the company briefly"
+        = f.input :tag_list, input_html:{data:{role:'tagsinput'}}
         = f.hidden_field :type, value: "Company"
 
       .form-actions

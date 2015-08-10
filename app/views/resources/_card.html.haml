@@ -16,7 +16,9 @@
       %h4.list-group-item-heading= resource.href
     .list-group-item
       %p.list-group-item-text Description
-      %h4.list-group-item-heading= resource.description
+    .list-group-item
+      %p.list-group-item-text Tags
+      %h4.list-group-item-heading= resource.tag_list
     - if resource.organization.present?
       .list-group-item
         %p.list-group-item-text Organization
