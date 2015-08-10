@@ -6,6 +6,9 @@ class Resource < ActiveRecord::Base
 
   belongs_to :owner, class_name: "User", foreign_key: "user_id"
 
+  scope :person, -> { where(type: 'person') }
+  scope :company, -> { where(type: 'company') }
+
   def tag_list
     self.tags.map { |t| t.title }.join(", ")
   end
@@ -14,8 +17,16 @@ class Resource < ActiveRecord::Base
     tag_titles = new_value.split(/,\s+/)
     self.tags = tag_titles.map { |title| Tag.where('title = ?', title).first or Tag.create(:title => title) }
   end
-
+  
   def to_s
     name
+  end
+
+  def resource_icon(resource)
+    if resource.type = 'Company'
+      return "fa-male"
+    else
+      return "fa-users"
+    end
   end
 end
