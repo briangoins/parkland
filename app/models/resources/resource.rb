@@ -14,7 +14,7 @@ class Resource < ActiveRecord::Base
   end
 
   def tag_list=(new_value)
-    tag_titles = new_value.split(/,\s+/)
+    tag_titles = new_value.split(/,\s*/)
     self.tags = tag_titles.map { |title| Tag.where('title = ?', title).first or Tag.create(:title => title) }
   end
   
